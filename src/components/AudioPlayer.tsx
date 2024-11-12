@@ -1,6 +1,4 @@
 import React from 'react';
-import { Play, Pause, Music } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 interface AudioPlayerProps {
   audioUrl: string;
@@ -8,99 +6,35 @@ interface AudioPlayerProps {
 }
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, color }) => {
-  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [initialized, setInitialized] = React.useState(false);
   const audioRef = React.useRef<HTMLAudioElement>(null);
 
-  // 🔥 Add this useEffect here
-  React.useEffect(() => {
-    const handleUserGesture = () => {
-      // Load the audio only after a user gesture (tap/click)
-      audioRef.current?.load();
-      window.removeEventListener('click', handleUserGesture);
-    };
-
-    // Listen for the first click/tap event
-    window.addEventListener('click', handleUserGesture);
-    return () => {
-      // Clean up the event listener when the component unmounts
-      window.removeEventListener('click', handleUserGesture);
-    };
-  }, []);
-
-  const togglePlay = async () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        try {
-          await audioRef.current.play();
-          setIsPlaying(true);
-        } catch (error) {
-          setIsPlaying(false);
-          console.error('Audio play error:', error);
-          alert('Impossible de lire l\'audio. Veuillez vérifier que le fichier existe ou autorisez la lecture sur votre appareil.');
-        }
-      }
+  // User gesture to initialize audio for iOS
+  const initializeAudio = () => {
+    if (audioRef.current && !initialized) {
+      audioRef.current.load(); // Initialize the audio element
+      setInitialized(true);
     }
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="relative mb-6">
-        <motion.div
-          animate={{ rotate: isPlaying ? 360 : 0 }}
-          transition={{ duration: 2, repeat: isPlaying ? Infinity : 0, ease: "linear" }}
+    <div
+      className="flex flex-col items-center p-4"
+      onClick={initializeAudio} // Listen for a tap to initialize the audio
+    >
+      {!initialized && (
+        <button
+          className={`${color} text-white p-4 rounded-lg mb-4`}
+          onClick={initializeAudio}
         >
-          <Music className="w-20 h-20 text-gray-300" />
-        </motion.div>
-        {isPlaying && (
-          <>
-            <motion.div
-              className="absolute top-0 left-0 w-full h-full"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 0.8, 0.5],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <div className="w-full h-full rounded-full border-2 border-current opacity-20" />
-            </motion.div>
-            <motion.div
-              className="absolute top-0 left-0 w-full h-full"
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.5,
-              }}
-            >
-              <div className="w-full h-full rounded-full border-2 border-current opacity-10" />
-            </motion.div>
-          </>
-        )}
-      </div>
-
-      <button
-        onClick={togglePlay}
-        className={`${color} text-white p-4 rounded-full transition-colors`}
-      >
-        {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8" />}
-      </button>
-
+          Tap to enable audio
+        </button>
+      )}
       <audio
         ref={audioRef}
         preload="none"
-        onError={() => setIsPlaying(false)}
-        onEnded={() => setIsPlaying(false)}
+        controls
+        className="w-full"
       >
         <source src={audioUrl} type="audio/mpeg" />
         Votre navigateur ne prend pas en charge l'élément audio.

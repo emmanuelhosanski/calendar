@@ -44,18 +44,10 @@ export const DayDetail: React.FC = () => {
 
   React.useEffect(() => {
     if (song) {
-      // Preload audio
-      const audio = new Audio(song.audioUrl);
-      audio.addEventListener('canplaythrough', () => {
-        setIsLoading(false);
-      });
-      audio.addEventListener('error', () => {
-        setIsLoading(false);
-        console.error('Error loading audio');
-      });
-      // Preload image
+      // Preload image only
       const img = new Image();
       img.src = song.imageHint;
+      setIsLoading(false); // Set loading to false immediately, let the AudioPlayer handle audio loading
     }
   }, [song]);
 
