@@ -22,11 +22,22 @@ const images = [
 export const Home: React.FC = () => {
   const { isTestMode, toggleMode } = useMode();
   const [showError, setShowError] = React.useState(false);
-  
+  const [clickCount, setClickCount] = React.useState(0);
+
   const today = new Date();
   const currentDay = today.getDate();
   const currentMonth = today.getMonth();
-  
+
+  // Handle clicks on "Calendrier de l'avent" for Test Mode activation
+  const handleTitleClick = () => {
+    setClickCount((prev) => prev + 1);
+
+    if (clickCount + 1 === 4) {
+      toggleMode();
+      setClickCount(0);
+    }
+  };
+
   const handleFutureClick = () => {
     setShowError(true);
     setTimeout(() => setShowError(false), 3000);
@@ -45,7 +56,7 @@ export const Home: React.FC = () => {
     }
     return currentMonth === 11 && day === currentDay; // Today's card wiggles in real mode
   };
-  
+
   const triggerEasterEgg = () => {
     // Select a random image
     const randomImage = images[Math.floor(Math.random() * images.length)];
@@ -57,20 +68,20 @@ export const Home: React.FC = () => {
     img.style.top = '50%';
     img.style.left = '50%';
     document.body.appendChild(img);
-  
+
     // Set initial direction, speed, and random angle
     const speed = Math.random() * 4 + 2; // Random speed between 2 and 6
-    let angle = Math.random() * Math.PI * 2; // Random angle between 0 and 2π (full circle)
+    let angle = Math.random() * Math.PI * 2; // Random angle between 0 and 2π
     let dx = Math.cos(angle) * speed;
     let dy = Math.sin(angle) * speed;
     let bounces = 0;
     const maxBounces = 10;
-  
+
     const animate = () => {
       const rect = img.getBoundingClientRect();
       const vw = window.innerWidth;
       const vh = window.innerHeight;
-  
+
       // Check for collision with screen edges and bounce
       if (rect.left <= 0 || rect.right >= vw) {
         dx = -dx;
@@ -80,11 +91,11 @@ export const Home: React.FC = () => {
         dy = -dy;
         bounces++;
       }
-  
+
       // Move the image
       img.style.left = `${rect.left + dx}px`;
       img.style.top = `${rect.top + dy}px`;
-  
+
       // Remove the image after a certain number of bounces
       if (bounces < maxBounces) {
         requestAnimationFrame(animate);
@@ -92,26 +103,28 @@ export const Home: React.FC = () => {
         img.remove();
       }
     };
-  
+
     requestAnimationFrame(animate);
   };
-  
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-6 sm:p-8">
       <div className="max-w-7xl mx-auto">
-      <h1 className="text-3xl sm:text-4xl font-bold text-purple-800 text-center mb-2">
+        <h1
+          className="text-3xl sm:text-4xl font-bold text-purple-800 text-center mb-2"
+          onClick={handleTitleClick}
+          style={{ cursor: 'pointer' }}
+        >
           Calendrier de l'avent
         </h1>
         <div className="text-center text-2xl mb-8" onClick={triggerEasterEgg} style={{ cursor: 'pointer' }}>
           🧸❤️🧸
         </div>
 
-
         {showError && (
           <div className="fixed top-4 right-4 left-4 sm:left-auto bg-red-500 text-white p-4 rounded-lg shadow-lg flex items-center gap-2 animate-bounce">
             <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            <p className="text-sm">Pas si vite ! Cette surprise n'est pas encore prête 🎅 ! </p>
+            <p className="text-sm">Pas si vite ! Cette surprise n'est pas encore prête 🎅 !</p>
           </div>
         )}
 
@@ -126,23 +139,6 @@ export const Home: React.FC = () => {
               onFutureClick={handleFutureClick}
             />
           ))}
-        </div>
-
-        <div className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm p-4 border-t border-purple-100">
-          <div className="max-w-7xl mx-auto flex justify-center">
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                className="sr-only peer"
-                checked={isTestMode}
-                onChange={toggleMode}
-              />
-              <div className="w-14 h-7 bg-purple-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-purple-600"></div>
-              <span className="ms-3 text-sm font-medium text-gray-900">
-                {isTestMode ? 'Mode Test' : 'Mode Réel'}
-              </span>
-            </label>
-          </div>
         </div>
       </div>
     </div>

@@ -3,11 +3,12 @@ import { Mode } from '../types';
 
 export const useMode = () => {
   const [mode, setMode] = useState<Mode>(() => {
-    const savedMode = localStorage.getItem('calendarMode');
-    return (savedMode as Mode) || 'real';
+    // Always default to 'real' mode when the app loads
+    return 'real';
   });
 
   useEffect(() => {
+    // Save the mode to localStorage whenever it changes
     localStorage.setItem('calendarMode', mode);
   }, [mode]);
 
