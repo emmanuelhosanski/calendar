@@ -167,7 +167,7 @@ export const DayDetail: React.FC = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="p-4 bg-gray-50 rounded-lg"
+                  className="p-4 bg-gray-200 rounded-lg"
                 >
                   <p className="text-gray-700 italic whitespace-pre-wrap text-sm">{song.lyricsHint}</p>
                 </motion.div>
