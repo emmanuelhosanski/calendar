@@ -4,7 +4,19 @@ import { useMode } from '../hooks/useMode';
 import { AlertCircle } from 'lucide-react';
 
 const images = [
-  '/images/bear1.png'
+  '/images/bear1.png',
+  '/images/bear2.png',
+  '/images/bear3.png',
+  '/images/bear4.png',
+  '/images/bear5.png',
+  '/images/bear6.png',
+  '/images/bear7.png',
+  '/images/bear8.png',
+  '/images/bear9.png',
+  '/images/bear10.png',
+  '/images/bear11.png',
+  '/images/bear12.png',
+  '/images/bear13.png',
 ];
 
 export const Home: React.FC = () => {
