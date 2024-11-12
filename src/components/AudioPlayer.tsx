@@ -11,17 +11,21 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, color }) => 
   const [isPlaying, setIsPlaying] = React.useState(false);
   const audioRef = React.useRef<HTMLAudioElement>(null);
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        void audioRef.current.play().catch(() => {
+        try {
+          await audioRef.current.play();
+          setIsPlaying(true);
+        } catch (error) {
           setIsPlaying(false);
-          alert('Impossible de lire l\'audio. Veuillez vérifier que le fichier existe.');
-        });
+          console.error('Audio play error:', error);
+          alert('Impossible de lire l\'audio. Veuillez vérifier que le fichier existe ou autorisez la lecture sur votre appareil.');
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
