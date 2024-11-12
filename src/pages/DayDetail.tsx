@@ -136,7 +136,7 @@ export const DayDetail: React.FC = () => {
                   exit={{ opacity: 0 }}
                   className="p-4 bg-gray-50 rounded-lg"
                 >
-                  <p className="text-gray-700 italic">{song.lyricsHint}</p>
+                  <p className="text-gray-700 italic whitespace-pre-wrap text-sm">{song.lyricsHint}</p>
                 </motion.div>
               )}
               <button

@@ -43,7 +43,7 @@ export const CalendarCard: React.FC<CalendarCardProps> = ({
     <motion.div
       whileHover={isActive ? { scale: 1.05 } : {}}
       whileTap={isActive ? { scale: 0.95 } : {}}
-      animate={shouldWiggle ? { rotate: [-2, 2] } : {}}
+      animate={shouldWiggle ? { rotate: [-40, 30] } : {}}
       transition={shouldWiggle ? { 
         rotate: { repeat: Infinity, duration: 0.5, repeatType: "reverse" },
         scale: { duration: 0.2 }

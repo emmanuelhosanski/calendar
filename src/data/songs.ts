@@ -7,7 +7,21 @@ export const songs: Song[] = [
     artist: "Michael Jackson",
     audioUrl: "/songs/day1.mp3",
     imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
-    lyricsHint: "Je ne veux pas grand chose pour Noël..."
+    lyricsHint: `
+    Les gens m'ont toujours dit : 
+    "Fais attention à ce que tu fais
+    Ne brise pas le cœur des jeunes filles" (hee-hee)
+    Et ma mère m'a toujours dit : 
+    "Fais attention à qui tu aimes
+    Et fais attention à ce que tu fais (oh-oh)
+    Parce que le mensonge devient la vérité" (oh-oh), hé-hé
+    
+    Billie Jean n'est pas mon amante
+    C'est juste une fille qui prétend que c'est moi (oh, bébé)
+    Mais le gamin n'est pas mon fils (hoo)
+    Elle dit que c'est moi qui suis (oh, bébé)
+    Mais le gamin n'est pas mon fils (hee-hee-hee, non-non, hee-hee-hee, hoo)
+    `
   },
   {
     id: 2,
