@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Image, Music, Type } from 'lucide-react';
+import { ChevronLeft, Image as LucideImage, Music, Type } from 'lucide-react';
 import { AudioPlayer } from '../components/AudioPlayer';
 import { songs } from '../data/songs';
 
@@ -36,7 +36,6 @@ export const DayDetail: React.FC = () => {
   const [showHint2, setShowHint2] = React.useState(false);
   const [showAnswer, setShowAnswer] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
-
   const dayNumber = parseInt(day || '1', 10);
   const color = colors[dayNumber - 1];
   const buttonColor = buttonColors[dayNumber - 1];
@@ -54,7 +53,6 @@ export const DayDetail: React.FC = () => {
         setIsLoading(false);
         console.error('Error loading audio');
       });
-
       // Preload image
       const img = new Image();
       img.src = song.imageHint;
@@ -79,7 +77,6 @@ export const DayDetail: React.FC = () => {
           <ChevronLeft className="w-5 h-5" />
           Retour au Calendrier
         </button>
-
         <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -89,7 +86,6 @@ export const DayDetail: React.FC = () => {
             <h1 className="text-3xl font-bold text-gray-800 mb-8">
               Jour {day}: Quelle est cette chanson ?
             </h1>
-
             <div className="mb-12">
               {isLoading ? (
                 <div className="flex items-center justify-center h-40">
@@ -99,14 +95,13 @@ export const DayDetail: React.FC = () => {
                 <AudioPlayer audioUrl={song.audioUrl} color={buttonColor} />
               )}
             </div>
-
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <button
                   onClick={() => setShowHint1(!showHint1)}
                   className={`flex items-center justify-center gap-2 p-4 rounded-lg transition-colors ${buttonColor} text-white`}
                 >
-                  <Image className="w-5 h-5" />
+                  <LucideImage className="w-5 h-5" />
                   {showHint1 ? 'Cacher l\'image' : 'Indice 1'}
                 </button>
                 <button
@@ -117,7 +112,6 @@ export const DayDetail: React.FC = () => {
                   {showHint2 ? 'Cacher les paroles' : 'Indice 2'}
                 </button>
               </div>
-
               {showHint1 && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -132,7 +126,6 @@ export const DayDetail: React.FC = () => {
                   />
                 </motion.div>
               )}
-
               {showHint2 && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -143,7 +136,6 @@ export const DayDetail: React.FC = () => {
                   <p className="text-gray-700 italic">{song.lyricsHint}</p>
                 </motion.div>
               )}
-
               <button
                 onClick={() => setShowAnswer(!showAnswer)}
                 className={`w-full p-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${buttonColor} text-white`}
@@ -151,7 +143,6 @@ export const DayDetail: React.FC = () => {
                 <Music className="w-5 h-5" />
                 {showAnswer ? 'Cacher la réponse' : 'Voir la réponse'}
               </button>
-
               {showAnswer && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
