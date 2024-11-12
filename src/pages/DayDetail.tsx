@@ -75,7 +75,7 @@ export const DayDetail: React.FC = () => {
           className={`mb-8 flex items-center gap-2 ${buttonColor} text-white rounded-lg px-4 py-2`}
         >
           <ChevronLeft className="w-5 h-5" />
-          Retour au Calendrier
+          Retour au calendrier
         </button>
         <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8">
           <motion.div
@@ -83,9 +83,12 @@ export const DayDetail: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <h1 className="text-3xl font-bold text-gray-800 mb-8">
-              Jour {day}: Quelle est cette chanson ?
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              Jour {day} 
             </h1>
+            <div className="text-center text-3xl mb-8">
+            Quelle est cette chanson ?
+            </div>
             <div className="mb-12">
               {isLoading ? (
                 <div className="flex items-center justify-center h-40">
@@ -102,14 +105,14 @@ export const DayDetail: React.FC = () => {
                   className={`flex items-center justify-center gap-2 p-4 rounded-lg transition-colors ${buttonColor} text-white`}
                 >
                   <LucideImage className="w-5 h-5" />
-                  {showHint1 ? 'Cacher l\'image' : 'Indice 1'}
+                  {showHint1 ? 'Cacher' : 'Indice 1'}
                 </button>
                 <button
                   onClick={() => setShowHint2(!showHint2)}
                   className={`flex items-center justify-center gap-2 p-4 rounded-lg transition-colors ${buttonColor} text-white`}
                 >
                   <Type className="w-5 h-5" />
-                  {showHint2 ? 'Cacher les paroles' : 'Indice 2'}
+                  {showHint2 ? 'Cacher' : 'Indice 2'}
                 </button>
               </div>
               {showHint1 && (

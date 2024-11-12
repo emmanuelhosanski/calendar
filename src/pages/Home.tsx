@@ -33,9 +33,12 @@ export const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-6 sm:p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-bold text-purple-800 text-center mb-8">
-          Calendrier de l'avent 🧸❤️🧸
+      <h1 className="text-3xl sm:text-4xl font-bold text-purple-800 text-center mb-2">
+          Calendrier de l'avent
         </h1>
+        <div className="text-center text-2xl mb-8">
+          🧸❤️🧸
+        </div>
 
         {showError && (
           <div className="fixed top-4 right-4 left-4 sm:left-auto bg-red-500 text-white p-4 rounded-lg shadow-lg flex items-center gap-2 animate-bounce">

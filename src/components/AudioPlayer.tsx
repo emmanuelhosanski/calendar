@@ -27,12 +27,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, color }) => 
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative mb-4">
+      <div className="relative mb-6">
         <motion.div
           animate={{ rotate: isPlaying ? 360 : 0 }}
           transition={{ duration: 2, repeat: isPlaying ? Infinity : 0, ease: "linear" }}
         >
-          <Music className="w-24 h-24 text-gray-300" />
+          <Music className="w-20 h-20 text-gray-300" />
         </motion.div>
         {isPlaying && (
           <>
