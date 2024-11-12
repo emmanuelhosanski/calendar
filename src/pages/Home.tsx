@@ -43,7 +43,7 @@ export const Home: React.FC = () => {
         {showError && (
           <div className="fixed top-4 right-4 left-4 sm:left-auto bg-red-500 text-white p-4 rounded-lg shadow-lg flex items-center gap-2 animate-bounce">
             <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            <p className="text-sm">Pas si vite ! Cette surprise n'est pas encore prête ! 🎅</p>
+            <p className="text-sm">Pas si vite ! Cette surprise n'est pas encore prête 🎅 ! </p>
           </div>
         )}
 
