@@ -11,6 +11,22 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, color }) => 
   const [isPlaying, setIsPlaying] = React.useState(false);
   const audioRef = React.useRef<HTMLAudioElement>(null);
 
+  // 🔥 Add this useEffect here
+  React.useEffect(() => {
+    const handleUserGesture = () => {
+      // Load the audio only after a user gesture (tap/click)
+      audioRef.current?.load();
+      window.removeEventListener('click', handleUserGesture);
+    };
+
+    // Listen for the first click/tap event
+    window.addEventListener('click', handleUserGesture);
+    return () => {
+      // Clean up the event listener when the component unmounts
+      window.removeEventListener('click', handleUserGesture);
+    };
+  }, []);
+
   const togglePlay = async () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -72,14 +88,14 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, color }) => 
           </>
         )}
       </div>
-      
+
       <button
         onClick={togglePlay}
         className={`${color} text-white p-4 rounded-full transition-colors`}
       >
         {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8" />}
       </button>
-      
+
       <audio
         ref={audioRef}
         preload="none"
