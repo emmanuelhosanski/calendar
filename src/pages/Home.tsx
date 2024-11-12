@@ -3,6 +3,10 @@ import { CalendarCard } from '../components/CalendarCard';
 import { useMode } from '../hooks/useMode';
 import { AlertCircle } from 'lucide-react';
 
+const images = [
+  '/images/bear1.png'
+];
+
 export const Home: React.FC = () => {
   const { isTestMode, toggleMode } = useMode();
   const [showError, setShowError] = React.useState(false);
@@ -29,16 +33,65 @@ export const Home: React.FC = () => {
     }
     return currentMonth === 11 && day === currentDay; // Today's card wiggles in real mode
   };
-
+  
+  const triggerEasterEgg = () => {
+    // Select a random image
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    const img = document.createElement('img');
+    img.src = randomImage;
+    img.style.position = 'fixed';
+    img.style.width = '100px';
+    img.style.zIndex = '1000';
+    img.style.top = '50%';
+    img.style.left = '50%';
+    document.body.appendChild(img);
+  
+    // Set initial direction and speed
+    let dx = 4;
+    let dy = 3;
+    let bounces = 0;
+    const maxBounces = 10;
+  
+    const animate = () => {
+      const rect = img.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+  
+      // Check for collision with screen edges and bounce
+      if (rect.left <= 0 || rect.right >= vw) {
+        dx = -dx;
+        bounces++;
+      }
+      if (rect.top <= 0 || rect.bottom >= vh) {
+        dy = -dy;
+        bounces++;
+      }
+  
+      // Move the image
+      img.style.left = `${rect.left + dx}px`;
+      img.style.top = `${rect.top + dy}px`;
+  
+      // Remove the image after a certain number of bounces
+      if (bounces < maxBounces) {
+        requestAnimationFrame(animate);
+      } else {
+        img.remove();
+      }
+    };
+  
+    requestAnimationFrame(animate);
+  };
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-6 sm:p-8">
       <div className="max-w-7xl mx-auto">
       <h1 className="text-3xl sm:text-4xl font-bold text-purple-800 text-center mb-2">
           Calendrier de l'avent
         </h1>
-        <div className="text-center text-2xl mb-8">
+        <div className="text-center text-2xl mb-8" onClick={triggerEasterEgg} style={{ cursor: 'pointer' }}>
           🧸❤️🧸
         </div>
+
 
         {showError && (
           <div className="fixed top-4 right-4 left-4 sm:left-auto bg-red-500 text-white p-4 rounded-lg shadow-lg flex items-center gap-2 animate-bounce">
