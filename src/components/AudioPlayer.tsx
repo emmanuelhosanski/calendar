@@ -82,7 +82,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, color }) => 
       
       <audio
         ref={audioRef}
-        preload="metadata"
+        preload="none"
         onError={() => setIsPlaying(false)}
         onEnded={() => setIsPlaying(false)}
       >
