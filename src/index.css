@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.confetti {
+    position: absolute;
+    will-change: transform;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    animation: confetti-fall 2s linear forwards;
+  }
+  
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+  
+  

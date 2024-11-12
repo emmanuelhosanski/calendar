@@ -13,6 +13,14 @@ const colors = [
   'from-fuchsia-400', 'from-blue-400', 'from-red-400', 'from-green-400',
   'from-purple-400', 'from-yellow-400', 'from-pink-400', 'from-indigo-400'
 ];
+const gradientEndColors = [
+  'to-red-600', 'to-green-600', 'to-blue-600', 'to-yellow-600',
+  'to-purple-600', 'to-pink-600', 'to-indigo-600', 'to-orange-600',
+  'to-teal-600', 'to-cyan-600', 'to-rose-600', 'to-violet-600',
+  'to-emerald-600', 'to-sky-600', 'to-amber-600', 'to-lime-600',
+  'to-fuchsia-600', 'to-blue-600', 'to-red-600', 'to-green-600',
+  'to-purple-600', 'to-yellow-600', 'to-pink-600', 'to-indigo-600'
+];
 
 const buttonColors = [
   'bg-red-500 hover:bg-red-600', 'bg-green-500 hover:bg-green-600',
@@ -38,18 +46,55 @@ export const DayDetail: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const dayNumber = parseInt(day || '1', 10);
   const color = colors[dayNumber - 1];
+  const gradientEndColor = gradientEndColors[dayNumber - 1];
   const buttonColor = buttonColors[dayNumber - 1];
-  
   const song = songs.find(s => s.id === dayNumber);
 
   React.useEffect(() => {
     if (song) {
-      // Preload image only
       const img = new Image();
       img.src = song.imageHint;
-      setIsLoading(false); // Set loading to false immediately, let the AudioPlayer handle audio loading
+      setIsLoading(false);
     }
   }, [song]);
+
+  const launchConfetti = () => {
+    const confettiCount = 150;
+
+    for (let i = 0; i < confettiCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('confetti');
+      document.body.appendChild(particle);
+
+      const size = Math.random() * 8 + 4;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      particle.style.position = 'absolute';
+      particle.style.top = `${window.innerHeight}px`;
+      particle.style.left = `${Math.random() * window.innerWidth}px`;
+
+      const angle = Math.random() * Math.PI * 2;
+      let velocity = Math.random() * 15 + 5;
+
+      const moveParticle = () => {
+        if (!particle.parentNode) return;
+        const x = parseFloat(particle.style.left) + Math.cos(angle) * velocity;
+        const y = parseFloat(particle.style.top) - Math.sin(angle) * velocity;
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        velocity *= 0.9;
+
+        if (velocity < 0.5) {
+          particle.remove();
+        } else {
+          requestAnimationFrame(moveParticle);
+        }
+      };
+
+      requestAnimationFrame(moveParticle);
+    }
+  };
 
   if (!song) {
     return (
@@ -75,12 +120,8 @@ export const DayDetail: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">
-              Jour {day} 
-            </h1>
-            <div className="text-center text-3xl mb-8">
-            Quelle est cette chanson ?
-            </div>
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">Jour {day}</h1>
+            <div className="text-center text-3xl mb-8">Quelle est cette chanson ?</div>
             <div className="mb-12">
               {isLoading ? (
                 <div className="flex items-center justify-center h-40">
@@ -132,7 +173,12 @@ export const DayDetail: React.FC = () => {
                 </motion.div>
               )}
               <button
-                onClick={() => setShowAnswer(!showAnswer)}
+                onClick={() => {
+                  setShowAnswer(!showAnswer);
+                  if (!showAnswer) {
+                    launchConfetti();
+                  }
+                }}
                 className={`w-full p-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${buttonColor} text-white`}
               >
                 <Music className="w-5 h-5" />
@@ -143,7 +189,7 @@ export const DayDetail: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  className={`p-6 rounded-lg text-white ${buttonColor}`}
+                  className={`p-6 rounded-lg text-white bg-gradient-to-r ${color} ${gradientEndColor}`}
                 >
                   <h2 className="text-2xl font-bold mb-2">{song.title}</h2>
                   <p className="text-xl">par {song.artist}</p>
