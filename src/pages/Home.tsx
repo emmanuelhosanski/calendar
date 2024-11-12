@@ -46,9 +46,11 @@ export const Home: React.FC = () => {
     img.style.left = '50%';
     document.body.appendChild(img);
   
-    // Set initial direction and speed
-    let dx = 4;
-    let dy = 3;
+    // Set initial direction, speed, and random angle
+    const speed = Math.random() * 4 + 2; // Random speed between 2 and 6
+    let angle = Math.random() * Math.PI * 2; // Random angle between 0 and 2π (full circle)
+    let dx = Math.cos(angle) * speed;
+    let dy = Math.sin(angle) * speed;
     let bounces = 0;
     const maxBounces = 10;
   
@@ -81,6 +83,7 @@ export const Home: React.FC = () => {
   
     requestAnimationFrame(animate);
   };
+  
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-6 sm:p-8">
