@@ -28,7 +28,7 @@ export const songs: Song[] = [
     title: "Uptown Funk",
     artist: "Bruno Mars",
     audioUrl: "/songs/day2.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint2.webp",
     lyricsHint: `
     Ce coup, ce froid glacial
     Michelle Pfeiffer, cet or blanc
@@ -67,7 +67,7 @@ export const songs: Song[] = [
     title: "You're the one that I want",
     artist: "John Travolta and Olivia Newton John",
     audioUrl: "/songs/day3.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint3.webp",
     lyricsHint: `
     J'ai des frissons, ils se multiplient
     Et je perds le contrôle
@@ -95,7 +95,7 @@ export const songs: Song[] = [
     title: "Whenever, wherever",
     artist: "Shakira",
     audioUrl: "/songs/day4.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint4.webp",
     lyricsHint: `
     Heureusement que tu es né si loin alors
     On pourrait tous les deux se moquer de la distance
@@ -126,7 +126,7 @@ export const songs: Song[] = [
     title: "Wonderwall",
     artist: "Oasis",
     audioUrl: "/songs/day5.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint5.webp",
     lyricsHint: `
     Aujourd'hui sera le jour où ils te le rendront
     À présent, tu devrais avoir réalisé d'une manière ou d'une autre ce que tu dois faire
@@ -148,7 +148,7 @@ export const songs: Song[] = [
     title: "Ma philosopohie",
     artist: "Amel Bent",
     audioUrl: "/songs/day6.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint6.webp",
     lyricsHint: `
     I only have one philosophy
     To be accepted as I am
@@ -178,7 +178,7 @@ export const songs: Song[] = [
     title: "Stayin Alive",
     artist: "Bee Gees",
     audioUrl: "/songs/day7.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint7.webp",
     lyricsHint: `
     Eh bien, ça se voit à la façon dont j'utilise ma marche
     Je suis un homme à femmes, pas le temps de parler
@@ -206,7 +206,7 @@ export const songs: Song[] = [
     title: "Dernière danse",
     artist: "Kyo",
     audioUrl: "/songs/day8.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint8.webp",
     lyricsHint: `
     I traveled her body for a long time
     Touched his face a hundred times
@@ -228,7 +228,7 @@ export const songs: Song[] = [
     title: "I will survive",
     artist: "Gloria Gaynor",
     audioUrl: "/songs/day9.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint9.webp",
     lyricsHint: `
     Au début j'avais peur, j'étais pétrifié
     Je pensais que je ne pourrais jamais vivre sans toi à mes côtés
@@ -252,7 +252,7 @@ export const songs: Song[] = [
     title: "Sous le vent",
     artist: "Garou & Céline Dion",
     audioUrl: "/songs/day10.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint10.webp",
     lyricsHint: `
     And if you think I was scared, that's not true
     I give my heart a vacation, a little rest
@@ -282,7 +282,7 @@ export const songs: Song[] = [
     title: "Femme like U",
     artist: "K-Maro",
     audioUrl: "/songs/day11.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint11.webp",
     lyricsHint: `
     When you sing, I forget, I no longer have the slightest worry
     I have evil that flees, you give sound to my life
@@ -314,7 +314,7 @@ export const songs: Song[] = [
     title: "Let it be",
     artist: "The Beatles",
     audioUrl: "/songs/day12.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint12.webp",
     lyricsHint: `
     Quand je me retrouve dans des moments difficiles
     Mère Marie vient à moi
@@ -354,7 +354,7 @@ export const songs: Song[] = [
     title: "Libertine",
     artist: "Mylène Farmer",
     audioUrl: "/songs/day13.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint13.webp",
     lyricsHint: `
     Moon ash, little bubble of foam
     Driven by the wind, I burn and I catch a cold
@@ -382,7 +382,7 @@ export const songs: Song[] = [
     title: "Lemon Tree",
     artist: "Fools Garden",
     audioUrl: "/songs/day14.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint14.webp",
     lyricsHint: `
     Je suis assis ici dans la pièce ennuyeuse
     C'est juste un autre dimanche après-midi pluvieux
@@ -411,7 +411,7 @@ export const songs: Song[] = [
     title: "Billie Jean",
     artist: "Michael Jackson",
     audioUrl: "/songs/day15.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint15.webp",
     lyricsHint: `
     Les gens m'ont toujours dit : "Fais attention à ce que tu fais
     Ne brise pas le cœur des jeunes filles" (hee-hee)
@@ -431,7 +431,7 @@ export const songs: Song[] = [
     title: "Démons de minuit",
     artist: "Images",
     audioUrl: "/songs/day16.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint16.webp",
     lyricsHint: `
     Deserted street
     Last cigarette
@@ -478,7 +478,7 @@ export const songs: Song[] = [
     title: "Pour que tu m'aimes encore",
     artist: "Céline Dion",
     audioUrl: "/songs/day17.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint17.webp",
     lyricsHint: `
     I understood all the words
     I understood correctly, thank you
@@ -509,7 +509,7 @@ export const songs: Song[] = [
     title: "Like a prayer",
     artist: "Madonna",
     audioUrl: "/songs/day18.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint18.webp",
     lyricsHint: `
     La vie est un mystère
     Tout le monde doit rester seul
@@ -532,7 +532,7 @@ export const songs: Song[] = [
     title: "Wannabe",
     artist: "Spice Girls",
     audioUrl: "/songs/day19.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint19.webp",
     lyricsHint: `
     Si tu veux mon avenir
     Oublie mon passé
@@ -556,7 +556,7 @@ export const songs: Song[] = [
     title: "Freed from desire",
     artist: "Gala",
     audioUrl: "/songs/day20.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint20.webp",
     lyricsHint: `
     Mon amour n'a pas d'argent, il a de fortes convictions
     Mon amour n'a aucun pouvoir, il a ses fortes convictions
@@ -579,7 +579,7 @@ export const songs: Song[] = [
     title: "Toxic",
     artist: "Britney Spears",
     audioUrl: "/songs/day21.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint21.webp",
     lyricsHint: `
     Bébé, tu ne vois pas que j'appelle ?
     Un gars comme toi devrait porter un avertissement
@@ -606,7 +606,7 @@ export const songs: Song[] = [
     title: "Nuit de folie",
     artist: "Nuit de folie",
     audioUrl: "/songs/day22.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint22.webp",
     lyricsHint: `
     There is no season for music to live
     Basically there are no seasons for the sound to live
@@ -633,7 +633,7 @@ export const songs: Song[] = [
     title: "Je marche seul",
     artist: "Jean-Jacques Goldman",
     audioUrl: "/songs/day23.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint23.webp",
     lyricsHint: `
     Like a boat drifts
     Without purpose and without motive
@@ -667,7 +667,7 @@ export const songs: Song[] = [
     title: "La vie en rose",
     artist: "Edith Piaf",
     audioUrl: "/songs/day24.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint24.webp",
     lyricsHint: `
     Eyes that make mine look down
     A laugh that is lost on his mouth
@@ -696,7 +696,7 @@ export const songs: Song[] = [
     title: "Alors on danse",
     artist: "Stromae",
     audioUrl: "/songs/day25.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint25.webp",
     lyricsHint: `
     Who says studies says work
     Who says work tells you money
