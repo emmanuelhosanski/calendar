@@ -6,7 +6,7 @@ export const songs: Song[] = [
     title: "La grenade",
     artist: "Clara Luciani",
     audioUrl: "/songs/day1.mp3",
-    imageHint: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=800",
+    imageHint: "/images/hint1.webp",
     lyricsHint: `
     Hey you
     What are you looking at?
